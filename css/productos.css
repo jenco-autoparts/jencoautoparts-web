@@ -1,0 +1,341 @@
+/* ============================================
+   SECCIÓN PRODUCTOS DESTACADOS - CARRUSEL
+   ============================================ */
+
+.featured-products {
+  background-color: transparent;
+  overflow: hidden;   /* Evita scroll horizontal por Jenco */
+}
+
+/* ============================================
+   HEADER ALINEADO A LA IZQUIERDA
+   ============================================ */
+.section__header--left {
+  text-align: left;
+  margin-bottom: var(--space-md);
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.section__header--left .section__subtitle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ============================================
+   BODY: CARRUSEL + JENCO LADO A LADO
+   ============================================ */
+.featured-products__body {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+}
+
+.featured-products__jenco {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.featured-products__jenco img {
+  width: 120%;
+  max-width: 1080px;
+  height: auto;
+  display: block;
+  margin-left: -60px;
+  margin-top: -210px;     /* 🔥 Sube Jenco hacia el título */
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 5;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ============================================
+   CARRUSEL
+   ============================================ */
+.products-carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.carousel-track-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--space-md);
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.carousel-track .product-card {
+  flex: 0 0 calc((100% - (var(--space-md) * 2)) / 3);
+}
+
+/* ============================================
+   BOTONES DE NAVEGACIÓN
+   ============================================ */
+.carousel-btn {
+  position: absolute;
+  top: 80px;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-base);
+}
+
+.carousel-btn:hover {
+  background-color: var(--color-orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn--prev {
+  left: 8px;
+}
+
+.carousel-btn--next {
+  right: 8px;
+}
+
+/* ============================================
+   DOTS / INDICADORES
+   ============================================ */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-light);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background-color: var(--color-orange);
+  width: 30px;
+  border-radius: 5px;
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+.product-card {
+  background-color: var(--color-cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-orange);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product-card__badge--new {
+  background-color: var(--color-black);
+}
+
+.product-card__image-wrap {
+  position: relative;
+  background-color: var(--color-white);
+  padding: var(--space-md);
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-card__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.08);
+}
+
+.product-card__info {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--space-xs);
+}
+
+.product-card__category {
+  font-size: var(--text-xs);
+  color: var(--color-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.product-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--color-black);
+  line-height: 1.2;
+  margin: 0;
+  min-height: 2.4em;
+}
+
+.product-card__price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-top: auto;
+  margin-bottom: var(--space-sm);
+}
+
+.product-card__price {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-black);
+}
+
+.product-card__price-old {
+  font-size: var(--text-sm);
+  color: var(--color-gray-medium);
+  text-decoration: line-through;
+}
+
+.product-card__btn {
+  width: 100%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  display: flex;              /* o inline-flex, según tengas */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;      /* 🟢 quita el subrayado del enlace */
+  text-align: center;
+}
+
+.product-card__btn:hover {
+  background-color: var(--color-orange);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet grande */
+@media (max-width: 1200px) {
+  .featured-products__body {
+    grid-template-columns: 1fr 500px;
+  }
+  
+  .featured-products__jenco img {
+    max-width: 640px;
+    margin-top: -120px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .featured-products__body {
+    grid-template-columns: 1fr 420px;
+  }
+  
+  .featured-products__jenco img {
+    max-width: 540px;
+    margin-left: -10px;
+    margin-top: -120px;
+  }
+  
+  .carousel-track .product-card {
+    flex: 0 0 calc((100% - var(--space-md)) / 2);
+  }
+}
+
+/* Mobile: ocultar Jenco */
+@media (max-width: 768px) {
+  .featured-products__body {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-products__jenco {
+    display: none;
+  }
+  
+  .section__header--left {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel-track .product-card {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    top: 90px;
+  }
+  
+  .product-card__image-wrap {
+    height: 180px;
+  }
+}

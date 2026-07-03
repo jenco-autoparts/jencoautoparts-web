@@ -1,0 +1,191 @@
+/* ============================================
+   SECCIÓN CONTACTO — Jenco vintage
+   Links a la izquierda · Jenco a la derecha
+   ============================================ */
+.contacto {
+  padding: var(--space-2xl) var(--space-md);
+  text-align: center;
+}
+
+/* Layout 2 columnas: links | Jenco, centrados verticalmente */
+.contacto__container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto auto;   /* 🟢 columnas del tamaño de su contenido */
+  justify-content: center;            /* 🎯 centra el bloque de columnas */
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+
+/* Título ocupa todo el ancho, arriba y centrado */
+.contacto__titulo {
+  grid-column: 1 / -1;
+  justify-self: center;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-black);
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  display: inline-block;
+}
+
+.contacto__titulo::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-orange);
+  margin: var(--space-xs) auto 0;
+  border-radius: var(--radius-sm);
+}
+
+/* Links: ancho fijo cómodo y alineados a la derecha de su columna */
+.contacto__links {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 360px;              /* 🟢 ancho fijo para los botones */
+  justify-self: end;         /* 🎯 pega los links hacia el centro */
+}
+
+/* Jenco: pegado hacia el centro también */
+.contacto__jenco {
+  order: 2;
+  margin-bottom: 0;
+  justify-self: start;       /* 🎯 pega Jenco hacia el centro */
+}
+
+.contacto__img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* Botones */
+.contacto__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+  color: var(--color-black);
+  text-decoration: none;
+  text-align: left;
+  border: 2px solid var(--color-gray-light);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.contacto__link:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-orange);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Ícono circular */
+.contacto__link i {
+  font-size: var(--text-xl);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.contacto__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.contacto__label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--text-lg);
+  letter-spacing: 0.02em;
+}
+
+.contacto__dato {
+  font-size: var(--text-sm);
+  color: var(--color-gray-medium);
+}
+
+/* Color de marca solo en el ícono */
+.contacto__link--wa   i { background: #25d366; }
+.contacto__link--web  i { background: var(--color-orange); }
+.contacto__link--meli i { background: #ffe600; color: var(--color-blue); }
+.contacto__link--fb   i { background: #1877f2; }
+.contacto__link--ig   i { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.contacto__link--mail i { background: var(--color-gray-dark); }
+
+/* ============================================
+   RESPONSIVE — móvil: apilar (Jenco arriba)
+   ============================================ */
+@media (max-width: 768px) {
+  .contacto__container {
+    grid-template-columns: 1fr;   /* una sola columna */
+    justify-content: stretch;     /* 🟢 reset del centrado de escritorio */
+    max-width: 480px;
+  }
+
+  /* Jenco arriba y centrado */
+  .contacto__jenco {
+    order: -1;
+    justify-self: center;         /* 🎯 centra a Jenco */
+  }
+
+  /* Links centrados y con ancho flexible */
+  .contacto__links {
+    justify-self: center;         /* 🎯 centra el bloque de links */
+    width: 100%;                  /* 🟢 quita el ancho fijo de 360px */
+    max-width: 360px;
+  }
+
+  .contacto__img {
+    max-width: 200px;
+  }
+}
+
+
+/* Evita que texto largo desborde */
+.contacto__texto {
+  min-width: 0;
+}
+
+.contacto__dato {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 📌 Sticky footer */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;           /* 🟢 body ocupa mínimo toda la pantalla */
+  display: flex;
+  flex-direction: column;      /* 🟢 apila header, main y footer en columna */
+}
+
+main {
+  flex: 1 0 auto;              /* 🎯 main crece y empuja el footer abajo */
+}
+
+.footer {
+  flex-shrink: 0;              /* 🟢 el footer nunca se encoge */
+  margin-top: auto;            /* 🎯 lo manda hasta el fondo */
+}
+
