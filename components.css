@@ -207,6 +207,7 @@
     transform: translateX(-100%);
     transition: transform var(--transition-base);
     overflow-y: auto;
+    z-index: 999;  
   }
   
   .nav.is-open {
