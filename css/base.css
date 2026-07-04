@@ -1,0 +1,156 @@
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-black);
+  background-color: var(--color-cream);
+  position: relative;
+}
+
+/* ============================================
+   EFECTO VINTAGE / SUCIO EN EL FONDO
+   ============================================ */
+
+/* Viñeta vintage oscura en los costados */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: 
+    radial-gradient(ellipse 40% 100% at left center, 
+      rgba(70, 40, 15, 0.35) 0%, 
+      rgba(70, 40, 15, 0.15) 30%, 
+      transparent 60%),
+    radial-gradient(ellipse 40% 100% at right center, 
+      rgba(70, 40, 15, 0.35) 0%, 
+      rgba(70, 40, 15, 0.15) 30%, 
+      transparent 60%);
+}
+
+/* Grain sutil tipo papel viejo en toda la página */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Asegura que el contenido quede ARRIBA del efecto */
+header, 
+main, 
+footer,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   SECCIONES TRANSPARENTES (mostrar vintage)
+   ============================================ */
+
+.section,
+section,
+main,
+.featured-products,
+.categories,
+.brands,
+.services,
+.testimonials,
+.newsletter,
+footer,
+.site-footer {
+  background-color: transparent !important;
+}
+
+/* Mantén el fondo de las CARDS para que se vean como tarjetas */
+.product-card,
+.category-card {
+  background-color: var(--color-cream);
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ============================================
+   UI DETALLES
+   ============================================ */
+
+::selection {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+/* ============================================
+   BOTÓN FLOTANTE WHATSAPP
+   ============================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: wa-pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+  color: #fff;
+}
+
+/* Pulso suave para llamar la atención */
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0 rgba(37,211,102,0.5); }
+  70%  { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 14px rgba(37,211,102,0); }
+  100% { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    font-size: 1.8rem;
+    bottom: 18px;
+    right: 18px;
+  }
+}
+
